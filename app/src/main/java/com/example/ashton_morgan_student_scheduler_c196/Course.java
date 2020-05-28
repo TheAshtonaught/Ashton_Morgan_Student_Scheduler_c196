@@ -15,14 +15,18 @@ public class Course {
     private String mentor;
     private String assessment;
     private String notes;
+    private int termID;
 
-    public Course(String title, String startDate, String endDate, String status, String mentor, String assessment) {
+    public Course(String title, String startDate, String endDate, String status,
+                  String mentor, String assessment, String notes, int termID) {
         this.title = title;
         this.startDate = startDate;
         this.endDate = endDate;
         this.status = status;
         this.mentor = mentor;
         this.assessment = assessment;
+        this.notes = notes;
+        this.termID = termID;
     }
 
     public void setId(int id) {
@@ -55,5 +59,13 @@ public class Course {
 
     public String getAssessment() {
         return assessment;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public int getTermID() {
+        return termID;
     }
 }

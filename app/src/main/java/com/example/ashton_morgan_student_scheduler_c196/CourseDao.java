@@ -20,7 +20,7 @@ public interface CourseDao {
     void update(Course course);
 
     @Delete
-    void Delete(Course course);
+    void delete(Course course);
 
     @Query("DELETE FROM course_table")
     void deleteAllCourses();

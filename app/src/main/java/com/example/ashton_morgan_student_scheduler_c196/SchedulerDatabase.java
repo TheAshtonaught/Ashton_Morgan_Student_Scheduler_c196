@@ -10,18 +10,18 @@ import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 @Database(entities = {Term.class, Course.class}, version = 1)
-public abstract class ScheduleDatabase extends RoomDatabase {
+public abstract class SchedulerDatabase extends RoomDatabase {
 
 
-    private static ScheduleDatabase instance;
+    private static SchedulerDatabase instance;
 
     public abstract CourseDao courseDao();
     public abstract TermDao termDao();
 
-    public static synchronized ScheduleDatabase getInstance(Context context) {
+    public static synchronized SchedulerDatabase getInstance(Context context) {
         if (instance == null) {
             instance = Room.databaseBuilder(context.getApplicationContext(),
-                    ScheduleDatabase.class, "schedule_database")
+                    SchedulerDatabase.class, "schedule_database")
                     .fallbackToDestructiveMigration()
                     .addCallback(roomCallback)
                     .build();
@@ -40,7 +40,7 @@ public abstract class ScheduleDatabase extends RoomDatabase {
         private TermDao termDao;
         private CourseDao courseDao;
 
-        private PopulateDbAsyncTask(ScheduleDatabase database) {
+        private PopulateDbAsyncTask(SchedulerDatabase database) {
             termDao = database.termDao();
             courseDao = database.courseDao();
         }

@@ -16,7 +16,7 @@ public class SchedulerRepository {
     private LiveData<List<Term>> allTerms;
 
     public SchedulerRepository(Application application) {
-        ScheduleDatabase database = ScheduleDatabase.getInstance(application);
+        SchedulerDatabase database = SchedulerDatabase.getInstance(application);
         courseDao = database.courseDao();
         allCourses = courseDao.getAllCourses();
         termDao = database.termDao();

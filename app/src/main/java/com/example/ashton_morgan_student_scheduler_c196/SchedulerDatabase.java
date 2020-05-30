@@ -30,11 +30,14 @@ public abstract class SchedulerDatabase extends RoomDatabase {
     }
 
     private static RoomDatabase.Callback roomCallback = new RoomDatabase.Callback() {
+
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
+            new PopulateDbAsyncTask(instance).execute();
         }
     };
+
 
     private static class PopulateDbAsyncTask extends AsyncTask<Void, Void, Void> {
         private TermDao termDao;

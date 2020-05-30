@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/term_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Term 1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:maxLines="1"
+            android:layout_alignParentStart="true"
+            android:ellipsize="end"/>
+
+        <TextView
+            android:id="@+id/sd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/term_title"
+            android:text="Start Date"/>
+
+        <TextView
+            android:id="@+id/start_date"
+            android:layout_below="@+id/term_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_toStartOf="@+id/sd"
+            android:text="10/01/2020"/>
+
+        <TextView
+            android:id="@+id/ed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sd"
+            android:text="End Date"/>
+
+        <TextView
+            android:id="@+id/end_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/start_date"
+            android:layout_alignParentEnd="true"
+            android:maxLines="1"
+            android:layout_toStartOf="@+id/ed"
+            android:text="04/01/2021"/>
+
+
+
+
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

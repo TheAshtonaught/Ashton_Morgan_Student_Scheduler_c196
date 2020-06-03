@@ -51,7 +51,7 @@ public class AddTermActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.save_term:
-                //save term
+                saveTerm();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

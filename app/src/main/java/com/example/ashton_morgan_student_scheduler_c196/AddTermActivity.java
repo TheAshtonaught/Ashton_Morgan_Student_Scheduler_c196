@@ -22,6 +22,8 @@ public class AddTermActivity extends AppCompatActivity {
             "com.example.ashton_morgan_student_scheduler_c196.EXTRA_START_DATE_STRING";
     public static final String EXTRA_END_DATE_STRING =
             "com.example.ashton_morgan_student_scheduler_c196.EXTRA_END_DATE_STRING";
+    public static final String EXTRA_TERM_ID =
+            "com.example.ashton_morgan_student_scheduler_c196.EXTRA_TERM_ID";
 
     private EditText editTextTitle;
     private EditText editTextStartDate;
@@ -37,7 +39,19 @@ public class AddTermActivity extends AppCompatActivity {
         editTextEndDate = findViewById(R.id.edit_text_end_date);
 
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
-        setTitle("Add Term");
+
+        Intent intent = getIntent();
+
+        if (intent.hasExtra(EXTRA_TERM_ID)) {
+            setTitle("Edit Term");
+            editTextTitle.setText(intent.getStringExtra(EXTRA_TERM_TITLE));
+            editTextStartDate.setText(intent.getStringExtra(EXTRA_START_DATE_STRING));
+            editTextEndDate.setText(intent.getStringExtra(EXTRA_END_DATE_STRING));
+        } else {
+            setTitle("Add Term");
+        }
+
+
     }
 
     @Override
@@ -76,6 +90,11 @@ public class AddTermActivity extends AppCompatActivity {
             data.putExtra(EXTRA_TERM_TITLE, title);
             data.putExtra(EXTRA_START_DATE_STRING, startDateString);
             data.putExtra(EXTRA_END_DATE_STRING, endDateString);
+
+            int id = getIntent().getIntExtra(EXTRA_TERM_ID, -1);
+            if (id != -1) {
+                data.putExtra(EXTRA_TERM_ID, id);
+            }
 
             setResult(RESULT_OK, data);
             finish();

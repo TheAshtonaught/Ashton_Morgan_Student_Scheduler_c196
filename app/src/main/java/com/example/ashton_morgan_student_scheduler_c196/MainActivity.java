@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.icu.text.CaseMap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -21,6 +20,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     public static final int ADD_TERM_REQUEST = 1;
+    public static final int EDIT_TERM_REQUEST = 2;
     private SchedulerViewModel schViewModel;
 
     @Override
@@ -68,6 +68,17 @@ public class MainActivity extends AppCompatActivity {
             }
         }).attachToRecyclerView(recyclerView);
 
+        adapter.setOnItemClickListener(new TermAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Term term) {
+                Intent intent = new Intent(MainActivity.this, AddTermActivity.class);
+                intent.putExtra(AddTermActivity.EXTRA_TERM_TITLE, term.getTitle());
+                intent.putExtra(AddTermActivity.EXTRA_START_DATE_STRING, term.getStartDate());
+                intent.putExtra(AddTermActivity.EXTRA_END_DATE_STRING, term.getEndDate());
+                intent.putExtra(AddTermActivity.EXTRA_TERM_ID, term.getId());
+                startActivityForResult(intent, EDIT_TERM_REQUEST);
+            }
+        });
     }
 
     @Override
@@ -82,9 +93,29 @@ public class MainActivity extends AppCompatActivity {
             Term term = new Term(title, startDateString, endDateString);
             schViewModel.insert(term);
             Toast.makeText(this, "Term Added", Toast.LENGTH_SHORT).show();
+        } else if (requestCode == EDIT_TERM_REQUEST && resultCode == RESULT_OK) {
+            int id = data.getIntExtra(AddTermActivity.EXTRA_TERM_ID, -1);
+
+            if (id == -1) {
+                Toast.makeText(this, "Update error", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            String title = data.getStringExtra(AddTermActivity.EXTRA_TERM_TITLE);
+            String startDateString = data.getStringExtra(AddTermActivity.EXTRA_START_DATE_STRING);
+            String endDateString = data.getStringExtra(AddTermActivity.EXTRA_END_DATE_STRING);
+
+            Term term = new Term(title, startDateString, endDateString);
+            term.setId(id);
+            schViewModel.update(term);
+
+            Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
+
         } else {
             Toast.makeText(this, "Term not added", Toast.LENGTH_SHORT).show();
         }
+
+
     }
 }
 

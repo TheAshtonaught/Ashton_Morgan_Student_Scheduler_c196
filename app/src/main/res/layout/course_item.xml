@@ -71,10 +71,27 @@
             android:text="04/01/2021"/>
 
         <TextView
+            android:id="@+id/term_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/course_end_date"
+            android:layout_alignParentStart="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:text="Term"/>
+
+        <Spinner
+            android:id="@+id/term_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/course_end_date"
+            android:layout_above="@id/mentor_label"
+            android:layout_alignParentEnd="true"/>
+
+        <TextView
             android:id="@+id/mentor_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/course_end_date"
+            android:layout_below="@+id/term_label"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:gravity="center"
             android:text="Course Mentor"/>
@@ -111,7 +128,7 @@
             android:text="Share Notes"/>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/Assessments"
+            android:id="@+id/assessments_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/share_notes_button"

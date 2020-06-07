@@ -12,56 +12,70 @@
         android:padding="8dp">
 
         <TextView
-            android:id="@+id/term_title"
+            android:id="@+id/status_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Term 1"
+            android:layout_alignParentEnd="true"
+            android:background="@color/colorAccent"
+            android:text="In Progress"/>
+
+        <TextView
+            android:id="@+id/course_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/status_textView"
+            android:text="C196 Mobile Application Development"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:maxLines="1"
             android:layout_alignParentStart="true"
             android:ellipsize="end"/>
 
-
-        <ImageButton
-            android:id="@+id/edit_term_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_above="@+id/start_date"
-            android:src="@drawable/ic_edit"/>
-
         <TextView
-            android:id="@+id/sd"
+            android:id="@+id/csd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/term_title"
+            android:layout_below="@+id/course_title"
             android:text="Start Date"/>
 
         <TextView
-            android:id="@+id/start_date"
-            android:layout_below="@+id/term_title"
+            android:id="@+id/course_start_date"
+            android:layout_below="@+id/course_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_toStartOf="@+id/sd"
+            android:layout_toStartOf="@+id/csd"
             android:text="10/01/2020"/>
 
         <TextView
-            android:id="@+id/ed"
+            android:id="@+id/ced"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/sd"
+            android:layout_below="@+id/csd"
             android:text="End Date"/>
 
         <TextView
-            android:id="@+id/end_date"
+            android:id="@+id/course_end_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/start_date"
+            android:layout_below="@+id/course_start_date"
             android:layout_alignParentEnd="true"
             android:maxLines="1"
-            android:layout_toStartOf="@+id/ed"
+            android:layout_toStartOf="@+id/ced"
             android:text="04/01/2021"/>
+
+        <TextView
+            android:id="@+id/mentor_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/course_end_date"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:gravity="center"
+            android:text="Course Mentor"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mentor_label"/>
 
 
 
@@ -71,3 +85,46 @@
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

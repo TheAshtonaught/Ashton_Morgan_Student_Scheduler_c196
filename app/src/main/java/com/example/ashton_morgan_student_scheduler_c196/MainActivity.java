@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, ADD_TERM_REQUEST);
             }
         });
+
 
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
@@ -68,7 +70,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }).attachToRecyclerView(recyclerView);
 
-        adapter.setOnItemClickListener(new TermAdapter.OnItemClickListener() {
+
+        adapter.setOnBtnClickListener(new TermAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Term term) {
                 Intent intent = new Intent(MainActivity.this, AddTermActivity.class);
@@ -77,6 +80,13 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(AddTermActivity.EXTRA_END_DATE_STRING, term.getEndDate());
                 intent.putExtra(AddTermActivity.EXTRA_TERM_ID, term.getId());
                 startActivityForResult(intent, EDIT_TERM_REQUEST);
+            }
+        });
+        adapter.setOnItemClickListener(new TermAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Term term) {
+
+
             }
         });
     }
@@ -112,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
 
         } else {
-            Toast.makeText(this, "Term not added", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No changes made", Toast.LENGTH_SHORT).show();
         }
 
 

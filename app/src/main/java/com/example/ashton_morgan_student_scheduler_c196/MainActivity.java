@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -82,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, EDIT_TERM_REQUEST);
             }
         });
+
         adapter.setOnItemClickListener(new TermAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Term term) {

@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setTitle("Student Scheduler");
+
 
         FloatingActionButton addTermButton = findViewById(R.id.add_term_button);
         addTermButton.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +87,11 @@ public class MainActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new TermAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Term term) {
+                Intent intent = new Intent(MainActivity.this, DetailedCourseActivity.class);
+                intent.putExtra(DetailedCourseActivity.EXTRA_COURSE_TERM_ID, term.getId());
+                intent.putExtra(DetailedCourseActivity.EXTRA_COURSE_TERM_TITLE, term.getTitle());
+                startActivity(intent);
+
 
 
             }

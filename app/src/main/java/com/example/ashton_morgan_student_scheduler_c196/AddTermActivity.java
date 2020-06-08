@@ -33,6 +33,7 @@ public class AddTermActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_term);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         editTextTitle = findViewById(R.id.edit_text_title);
         editTextStartDate = findViewById(R.id.edit_text_start_date);

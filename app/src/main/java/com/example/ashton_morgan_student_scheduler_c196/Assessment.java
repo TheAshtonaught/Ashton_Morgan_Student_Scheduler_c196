@@ -12,12 +12,14 @@ public class Assessment {
     private String title;
     private String type;
     private String courseTitle;
+    private int courseId;
 
-    public Assessment(String dueDate, String title, String type, String courseTitle) {
+    public Assessment(String dueDate, String title, String type, String courseTitle, int courseId) {
         this.dueDate = dueDate;
         this.title = title;
         this.type = type;
         this.courseTitle = courseTitle;
+        this.courseId = courseId;
     }
 
     public void setId(int id) {
@@ -42,5 +44,9 @@ public class Assessment {
 
     public String getCourseTitle() {
         return courseTitle;
+    }
+
+    public int getCourseId() {
+        return courseId;
     }
 }

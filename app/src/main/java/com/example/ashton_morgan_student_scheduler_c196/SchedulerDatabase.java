@@ -9,7 +9,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {Term.class, Course.class, Assessment.class}, version = 2)
+@Database(entities = {Term.class, Course.class, Assessment.class}, version = 3)
 public abstract class SchedulerDatabase extends RoomDatabase {
 
 
@@ -41,7 +41,7 @@ public abstract class SchedulerDatabase extends RoomDatabase {
         @Override
         public void onOpen(@NonNull SupportSQLiteDatabase db) {
             super.onOpen(db);
-            new PopulateDbAsyncTask(instance).execute();
+            //new PopulateDbAsyncTask(instance).execute();
         }
     };
 
@@ -67,7 +67,7 @@ public abstract class SchedulerDatabase extends RoomDatabase {
 
 
             assessmentDao.insert(new Assessment("06/26/2020", "Android Software Scheduler", "Performance Assessment",
-                    "C495 Software Development"));
+                    "C495 Software Development", 1));
 
             return null;
         }

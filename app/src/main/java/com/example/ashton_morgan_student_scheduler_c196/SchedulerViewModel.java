@@ -12,7 +12,7 @@ public class SchedulerViewModel extends AndroidViewModel {
     private SchedulerRepository repository;
     private LiveData<List<Term>> allTerms;
     private LiveData<List<Course>> allCourses;
-
+    private LiveData<List<Assessment>> allAssessments;
 
 
     public SchedulerViewModel(@NonNull Application application) {
@@ -20,6 +20,7 @@ public class SchedulerViewModel extends AndroidViewModel {
         repository = new SchedulerRepository(application);
         allCourses = repository.getAllCourses();
         allTerms = repository.getAllTerms();
+        allAssessments = repository.getAllAssessments();
 
     }
 
@@ -65,6 +66,26 @@ public class SchedulerViewModel extends AndroidViewModel {
         return allCourses;
     }
 
+    public void insert(Assessment assessment) {
+        repository.insert(assessment);
+    }
+
+    public void update(Assessment assessment) {
+        repository.update(assessment);
+
+    }
+
+    public void delete(Assessment assessment) {
+        repository.delete(assessment);
+    }
+
+    public void deleteAllAssessments() {
+        repository.deleteAllAssessments();
+    }
+
+    public LiveData<List<Assessment>> getAllAssessments() {
+        return allAssessments;
+    }
 
 
 }

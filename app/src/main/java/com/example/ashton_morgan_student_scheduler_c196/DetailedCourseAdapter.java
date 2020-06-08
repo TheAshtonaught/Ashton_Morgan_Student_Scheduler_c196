@@ -3,14 +3,12 @@ package com.example.ashton_morgan_student_scheduler_c196;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +16,9 @@ import java.util.List;
 
 public class DetailedCourseAdapter extends RecyclerView.Adapter<DetailedCourseAdapter.DetailedCourseHolder> {
     private List<Course> courses = new ArrayList<>();
+    private OnItemClickListener editCourseListener;
+    private OnItemClickListener shareNotesListener;
+    private OnItemClickListener assessmentsListener;
 
     @NonNull
     @Override
@@ -30,9 +31,36 @@ public class DetailedCourseAdapter extends RecyclerView.Adapter<DetailedCourseAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull DetailedCourseHolder holder, int position) {
+    public void onBindViewHolder(@NonNull DetailedCourseHolder holder, final int position) {
+        Course currentCourse = courses.get(position);
+        holder.statusTextView.setText(currentCourse.getStatus());
+        holder.courseTitleTextView.setText(currentCourse.getTitle());
+        holder.startDateTextView.setText(currentCourse.getStartDate());
+        holder.endDateTextView.setText(currentCourse.getEndDate());
+        holder.notesTextView.setText(currentCourse.getNotes());
+        holder.mentorInfoTextView.setText(currentCourse.getMentor());
 
-        //TODO: HANDLE
+        holder.shareNotesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                shareNotesListener.onItemClick(courses.get(position));
+            }
+        });
+
+        holder.assessmentsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                assessmentsListener.onItemClick(courses.get(position));
+            }
+        });
+
+        holder.editCourseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editCourseListener.onItemClick(courses.get(position));
+            }
+        });
+
 
     }
 
@@ -53,10 +81,9 @@ public class DetailedCourseAdapter extends RecyclerView.Adapter<DetailedCourseAd
         private TextView endDateTextView;
         private TextView notesTextView;
         private TextView mentorInfoTextView;
-        private MaterialButton shareNotesButton;
-        private MaterialButton assessmentsButton;
+        private Button shareNotesButton;
+        private Button assessmentsButton;
         private ImageButton editCourseButton;
-        private Spinner termDropDown;
 
         public DetailedCourseHolder(@NonNull View itemView) {
             super(itemView);
@@ -69,14 +96,25 @@ public class DetailedCourseAdapter extends RecyclerView.Adapter<DetailedCourseAd
             shareNotesButton = itemView.findViewById(R.id.share_notes_button);
             assessmentsButton = itemView.findViewById(R.id.assessments_button);
             editCourseButton = itemView.findViewById(R.id.edit_course_button);
-            termDropDown = itemView.findViewById(R.id.term_spinner);
 
         }
     }
 
+    public interface OnItemClickListener {
+        void onItemClick(Course course);
+    }
 
+    public void setOnShareButtonClickListener(OnItemClickListener listener) {
+        this.shareNotesListener = listener;
+    }
 
+    public void setOnAssessmentButtonClickListener(OnItemClickListener listener) {
+        this.assessmentsListener = listener;
+    }
 
+    public void setOnEditButtonClickListener(OnItemClickListener listener) {
+        this.editCourseListener = listener;
+    }
 
 
 

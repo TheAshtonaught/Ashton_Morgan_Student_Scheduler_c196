@@ -74,6 +74,10 @@ public class DetailedCourseAdapter extends RecyclerView.Adapter<DetailedCourseAd
         notifyDataSetChanged();
     }
 
+    public Course getCourseAt(int pos) {
+        return courses.get(pos);
+    }
+
     class DetailedCourseHolder extends RecyclerView.ViewHolder {
         private TextView courseTitleTextView;
         private TextView statusTextView;

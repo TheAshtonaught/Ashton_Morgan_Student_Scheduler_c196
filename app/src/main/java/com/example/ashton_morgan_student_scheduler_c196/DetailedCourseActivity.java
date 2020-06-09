@@ -1,14 +1,17 @@
 package com.example.ashton_morgan_student_scheduler_c196;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -64,10 +67,24 @@ public class DetailedCourseActivity extends AppCompatActivity {
             }
         });
 
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
+                ItemTouchHelper.LEFT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                schedulerViewModel.delete(adapter.getCourseAt(viewHolder.getAdapterPosition()));
+                Toast.makeText(DetailedCourseActivity.this, "Course Deleted", Toast.LENGTH_SHORT).show();
+            }
+        }).attachToRecyclerView(recyclerView);
+
         adapter.setOnAssessmentButtonClickListener(new DetailedCourseAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Course course) {
-                //TODO: Go to assessment for course
+                //TODO: Go to assessments for course
 
             }
         });

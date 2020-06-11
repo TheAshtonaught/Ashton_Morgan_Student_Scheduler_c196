@@ -30,7 +30,7 @@ public class DetailedCourseActivity extends AppCompatActivity {
     private int termID;
     private int ADD_COURSE_REQUEST = 1;
     private int EDIT_COURSE_REQUEST = 2;
-
+    private List<Course> coursesForTerm;
 
 
     @Override
@@ -38,10 +38,18 @@ public class DetailedCourseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailed_course);
 
+
+
         Intent intent = getIntent();
-        termID = intent.getIntExtra(EXTRA_COURSE_TERM_ID, -99);
-        String termTitle = intent.getStringExtra(EXTRA_COURSE_TERM_TITLE);
-        setTitle(termTitle);
+        if (intent.getExtras() == null) {
+            System.out.println("no intentions of any kind and term Id is " + termID);
+
+        } else {
+            termID = intent.getIntExtra(EXTRA_COURSE_TERM_ID, -99);
+            String termTitle = intent.getStringExtra(EXTRA_COURSE_TERM_TITLE);
+            setTitle(termTitle);
+        }
+
 
 
 
@@ -66,7 +74,8 @@ public class DetailedCourseActivity extends AppCompatActivity {
         schedulerViewModel.getAllCourses().observe(this, new Observer<List<Course>>() {
             @Override
             public void onChanged(List<Course> courses) {
-                List<Course> coursesForTerm = new ArrayList<>();
+
+                coursesForTerm = new ArrayList<>();
                 for (Course c : courses) {
                     if (c.getTermID() == termID) {
                         coursesForTerm.add(c);

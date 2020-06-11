@@ -41,6 +41,8 @@ public class AddCourseActivity extends AppCompatActivity {
     private EditText editCourseMentor;
     private EditText editCourseNotes;
 
+    private int termID;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,8 @@ public class AddCourseActivity extends AppCompatActivity {
         } else {
             setTitle("Add Course");
         }
+        termID = intent.getIntExtra(EXTRA_TERM_ID, -99);
+
 
 
     }
@@ -77,7 +81,8 @@ public class AddCourseActivity extends AppCompatActivity {
                 saveCourse();
                 return true;
             default:
-                return super.onOptionsItemSelected(item);
+                cancelAddCourse();
+                return true;
         }
     }
 
@@ -121,6 +126,12 @@ public class AddCourseActivity extends AppCompatActivity {
             e.printStackTrace();
             return;
         }
+    }
+
+    public void cancelAddCourse() {
+        Intent intent = new Intent();
+        setResult(RESULT_CANCELED, intent);
+        finish();
     }
 
     private void populateCourseData(Intent intent) {

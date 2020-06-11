@@ -13,18 +13,16 @@ public class Course {
     private String endDate;
     private String status;
     private String mentor;
-    private String assessment;
     private String notes;
     private int termID;
 
     public Course(String title, String startDate, String endDate, String status,
-                  String mentor, String assessment, String notes, int termID) {
+                  String mentor, String notes, int termID) {
         this.title = title;
         this.startDate = startDate;
         this.endDate = endDate;
         this.status = status;
         this.mentor = mentor;
-        this.assessment = assessment;
         this.notes = notes;
         this.termID = termID;
     }
@@ -55,10 +53,6 @@ public class Course {
 
     public String getMentor() {
         return mentor;
-    }
-
-    public String getAssessment() {
-        return assessment;
     }
 
     public String getNotes() {

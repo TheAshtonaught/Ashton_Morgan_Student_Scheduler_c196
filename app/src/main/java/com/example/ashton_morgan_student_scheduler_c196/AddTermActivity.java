@@ -34,12 +34,13 @@ public class AddTermActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_term);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
 
         editTextTitle = findViewById(R.id.edit_text_title);
         editTextStartDate = findViewById(R.id.edit_text_start_date);
         editTextEndDate = findViewById(R.id.edit_text_end_date);
 
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
+
 
         Intent intent = getIntent();
 

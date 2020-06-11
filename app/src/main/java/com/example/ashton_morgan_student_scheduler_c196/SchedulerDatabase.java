@@ -9,7 +9,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {Term.class, Course.class, Assessment.class}, version = 3)
+@Database(entities = {Term.class, Course.class, Assessment.class}, version = 4)
 public abstract class SchedulerDatabase extends RoomDatabase {
 
 
@@ -58,12 +58,18 @@ public abstract class SchedulerDatabase extends RoomDatabase {
         }
         @Override
         protected Void doInBackground(Void... voids) {
+            String notesSample = "You will develop a multiple-screen mobile application for WGU students to track their terms, " +
+                    "courses associated with each term, and assessment(s) associated with each course. " +
+                    "The application will allow students to enter, edit, and delete term, co";
+
             termDao.insert(new Term("Term 1", "10/01/2020", "04/01/2021"));
             termDao.insert(new Term("Term 2", "05/01/2021", "11/01/2021"));
             termDao.insert(new Term("Term 3", "11/01/2021", "04/01/2022"));
 
             courseDao.insert(new Course("C495 Software Development","10/01/2020", "11/15/2020",
-                    "In Progress", "Tem Mohamed tem233@Wgu.edu 868-847-1444", "Performance assessment", "none", 1));
+                    "In Progress", "Mickey mouse mickey@wgu.edu 373-222-2105", notesSample, 1));
+            courseDao.insert(new Course("C176 Data Structures","10/01/2021", "11/15/2021",
+                    "Planned", "Mickey mouse mickey@wgu.edu 373-222-2105", "none", 1));
 
 
             assessmentDao.insert(new Assessment("06/26/2020", "Android Software Scheduler", "Performance Assessment",

@@ -92,8 +92,6 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(DetailedCourseActivity.EXTRA_COURSE_TERM_TITLE, term.getTitle());
                 startActivity(intent);
 
-
-
             }
         });
     }

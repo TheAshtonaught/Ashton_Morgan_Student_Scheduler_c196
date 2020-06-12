@@ -41,17 +41,9 @@ public class DetailedCourseActivity extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        if (intent.getExtras() == null) {
-            System.out.println("no intentions of any kind and term Id is " + termID);
-
-        } else {
-            termID = intent.getIntExtra(EXTRA_COURSE_TERM_ID, -99);
-            String termTitle = intent.getStringExtra(EXTRA_COURSE_TERM_TITLE);
-            setTitle(termTitle);
-        }
-
-
-
+        termID = intent.getIntExtra(EXTRA_COURSE_TERM_ID, -99);
+        String termTitle = intent.getStringExtra(EXTRA_COURSE_TERM_TITLE);
+        setTitle(termTitle);
 
         FloatingActionButton addCourseButton = findViewById(R.id.add_course_button);
         addCourseButton.setOnClickListener(new View.OnClickListener() {

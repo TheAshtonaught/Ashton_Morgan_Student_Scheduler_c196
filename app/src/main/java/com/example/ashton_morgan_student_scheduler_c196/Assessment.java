@@ -11,14 +11,12 @@ public class Assessment {
     private String dueDate;
     private String title;
     private String type;
-    private String courseTitle;
     private int courseId;
 
-    public Assessment(String dueDate, String title, String type, String courseTitle, int courseId) {
+    public Assessment(String dueDate, String title, String type, int courseId) {
         this.dueDate = dueDate;
         this.title = title;
         this.type = type;
-        this.courseTitle = courseTitle;
         this.courseId = courseId;
     }
 
@@ -40,10 +38,6 @@ public class Assessment {
 
     public String getType() {
         return type;
-    }
-
-    public String getCourseTitle() {
-        return courseTitle;
     }
 
     public int getCourseId() {

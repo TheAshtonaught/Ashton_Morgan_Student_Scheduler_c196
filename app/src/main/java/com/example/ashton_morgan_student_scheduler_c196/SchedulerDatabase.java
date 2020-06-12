@@ -9,7 +9,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {Term.class, Course.class, Assessment.class}, version = 4)
+@Database(entities = {Term.class, Course.class, Assessment.class}, version = 5)
 public abstract class SchedulerDatabase extends RoomDatabase {
 
 
@@ -72,8 +72,7 @@ public abstract class SchedulerDatabase extends RoomDatabase {
                     "Planned", "Mickey mouse mickey@wgu.edu 373-222-2105", "none", 1));
 
 
-            assessmentDao.insert(new Assessment("06/26/2020", "Android Software Scheduler", "Performance Assessment",
-                    "C495 Software Development", 1));
+            assessmentDao.insert(new Assessment("06/26/2020", "Android Software Scheduler", "Performance Assessment", 1));
 
             return null;
         }

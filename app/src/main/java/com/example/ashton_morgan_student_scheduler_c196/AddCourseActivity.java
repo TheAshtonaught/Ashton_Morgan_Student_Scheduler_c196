@@ -63,8 +63,6 @@ public class AddCourseActivity extends AppCompatActivity {
         }
         termID = intent.getIntExtra(EXTRA_TERM_ID, -99);
 
-
-
     }
 
     @Override

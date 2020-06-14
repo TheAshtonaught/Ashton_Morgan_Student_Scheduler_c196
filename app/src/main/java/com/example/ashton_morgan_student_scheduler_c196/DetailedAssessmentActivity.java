@@ -77,9 +77,9 @@ public class DetailedAssessmentActivity extends AppCompatActivity {
         addCourseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(DetailedAssessmentActivity.this, AddAssessmentActivity.class);
-//                intent.putExtra(AddAssessmentActivity.EXTRA_COURSE_ID, courseID);
-//                startActivityForResult(intent, ADD_ASSESSMENT_REQUEST);
+                Intent intent = new Intent(DetailedAssessmentActivity.this, AddAssessmentActivity.class);
+                intent.putExtra(AddAssessmentActivity.EXTRA_ASSESSMENT_COURSE_ID, courseID);
+                startActivityForResult(intent, ADD_ASSESSMENT_REQUEST);
 
             }
         });
@@ -87,7 +87,12 @@ public class DetailedAssessmentActivity extends AppCompatActivity {
         adapter.setOnBtnClickListener(new DetailedAssessmentAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Assessment assessment) {
-                //TODO: edit assessment
+                Intent intent = new Intent(DetailedAssessmentActivity.this, AddAssessmentActivity.class);
+                intent.putExtra(AddAssessmentActivity.EXTRA_ASSESSMENT_ID, assessment.getId());
+                intent.putExtra(AddAssessmentActivity.EXTRA_ASSESSMENT_TITLE, assessment.getTitle());
+                intent.putExtra(AddAssessmentActivity.EXTRA_ASSESSMENT_TYPE, assessment.getType());
+                intent.putExtra(AddAssessmentActivity.EXTRA_ASSESSMENT_DUE_DATE, assessment.getDueDate());
+                startActivityForResult(intent, EDIT_ASSESSMENT_REQUEST);
             }
         });
 
@@ -97,6 +102,36 @@ public class DetailedAssessmentActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        if(requestCode == ADD_ASSESSMENT_REQUEST && resultCode == RESULT_OK) {
+
+            String assessmentTitle =  data.getStringExtra(AddAssessmentActivity.EXTRA_ASSESSMENT_TITLE);
+            String assessmentDueDate = data.getStringExtra(AddAssessmentActivity.EXTRA_ASSESSMENT_DUE_DATE);
+            String assessmentType = data.getStringExtra(AddAssessmentActivity.EXTRA_ASSESSMENT_TYPE);
+
+            Assessment assessment = new Assessment(assessmentDueDate, assessmentTitle, assessmentType, courseID);
+            schedulerViewModel.insert(assessment);
+
+            Toast.makeText(this, "Assessment Added", Toast.LENGTH_SHORT).show();
+        } else if (requestCode == EDIT_ASSESSMENT_REQUEST && resultCode == RESULT_OK) {
+            int id = data.getIntExtra(AddAssessmentActivity.EXTRA_ASSESSMENT_ID, -1);
+
+            if (id == -1) {
+                Toast.makeText(this, "Update error", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            String assessmentTitle =  data.getStringExtra(AddAssessmentActivity.EXTRA_ASSESSMENT_TITLE);
+            String assessmentDueDate = data.getStringExtra(AddAssessmentActivity.EXTRA_ASSESSMENT_DUE_DATE);
+            String assessmentType = data.getStringExtra(AddAssessmentActivity.EXTRA_ASSESSMENT_TYPE);
+
+            Assessment assessment = new Assessment(assessmentDueDate, assessmentTitle, assessmentType, courseID);
+            assessment.setId(id);
+            schedulerViewModel.update(assessment);
+
+            Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
+
+        } else {
+            Toast.makeText(this, "No changes made", Toast.LENGTH_SHORT).show();
+        }
 
     }
 }

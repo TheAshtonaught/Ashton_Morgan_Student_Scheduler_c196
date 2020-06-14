@@ -26,7 +26,6 @@ public class DetailedCourseActivity extends AppCompatActivity {
     public static final String EXTRA_COURSE_TERM_TITLE =
             "com.example.ashton_morgan_student_scheduler_c196.EXTRA_COURSE_TERM_TITLE";
 
-
     private int termID;
     private int ADD_COURSE_REQUEST = 1;
     private int EDIT_COURSE_REQUEST = 2;
@@ -96,7 +95,9 @@ public class DetailedCourseActivity extends AppCompatActivity {
         adapter.setOnAssessmentButtonClickListener(new DetailedCourseAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Course course) {
-                //TODO: Go to assessments for course
+                Intent intent = new Intent(DetailedCourseActivity.this, DetailedAssessmentActivity.class);
+                intent.putExtra(DetailedAssessmentActivity.EXTRA_ASSESSMENT_COURSE_ID, course.getId());
+                startActivity(intent);
 
             }
         });

@@ -12,5 +12,13 @@
         android:layout_height="wrap_content"
         tools:listitem="@layout/assessment_item"/>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_assessment_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_add"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="32dp"/>
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

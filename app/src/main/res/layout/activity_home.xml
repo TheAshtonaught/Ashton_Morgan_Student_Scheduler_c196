@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:padding="8dp">
+
+        <Button
+            android:id="@+id/all_terms_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="TERMS"/>
+
+        <Button
+            android:id="@+id/all_courses_button"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="8dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/all_terms_button"
+            android:text="Courses"/>
+
+        <Button
+            android:id="@+id/all_assessments_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_below="@+id/all_courses_button"
+            android:text="ASSESSMENTS"/>
+
+    </RelativeLayout>
+
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

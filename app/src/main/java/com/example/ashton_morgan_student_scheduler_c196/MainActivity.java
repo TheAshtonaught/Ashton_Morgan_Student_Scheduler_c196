@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         setTitle("Student Scheduler");
 
 
+
         FloatingActionButton addTermButton = findViewById(R.id.add_term_button);
         addTermButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        Toast.makeText(MainActivity.this, "Select a term", Toast.LENGTH_SHORT).show();
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

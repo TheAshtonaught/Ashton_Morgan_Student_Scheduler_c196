@@ -42,6 +42,8 @@ public class HomeActivity extends AppCompatActivity {
         assessmentsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, AllAssessmentsActivity.class);
+                startActivity(intent);
 
             }
         });

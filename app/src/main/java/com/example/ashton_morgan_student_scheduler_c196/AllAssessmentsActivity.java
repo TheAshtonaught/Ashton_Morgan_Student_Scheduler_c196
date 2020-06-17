@@ -14,38 +14,37 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
-public class AllCoursesActivity extends AppCompatActivity {
+public class AllAssessmentsActivity extends AppCompatActivity {
     private SchedulerViewModel schedulerViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_all_courses);
-        setTitle("All Courses");
+        setContentView(R.layout.activity_all_assessments);
+        setTitle("All Assessments");
 
-        RecyclerView recyclerView = findViewById(R.id.all_courses_recycler_view);
+        RecyclerView recyclerView = findViewById(R.id.all_assessments_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
 
-        final BasicCourseAdapter adapter = new BasicCourseAdapter();
+        final BasicAssessmentAdapter adapter = new BasicAssessmentAdapter();
         recyclerView.setAdapter(adapter);
 
         schedulerViewModel = new ViewModelProvider(this).get(SchedulerViewModel.class);
-        schedulerViewModel.getAllCourses().observe(this, new Observer<List<Course>>() {
+        schedulerViewModel.getAllAssessments().observe(this, new Observer<List<Assessment>>() {
             @Override
-            public void onChanged(List<Course> courses) {
-                adapter.setCourses(courses);
+            public void onChanged(List<Assessment> assessments) {
+                adapter.setAssessments(assessments);
             }
         });
 
-        FloatingActionButton addCourseFromBasicButton = findViewById(R.id.basic_add_course_button);
-        addCourseFromBasicButton.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton addAssessmentFromBasicButton = findViewById(R.id.basic_add_assessment_button);
+        addAssessmentFromBasicButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AllCoursesActivity.this, MainActivity.class);
+                Intent intent = new Intent(AllAssessmentsActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
-
     }
 }

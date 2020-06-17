@@ -30,6 +30,66 @@
             android:gravity="center_horizontal"
             android:text="In Progress"/>
 
+        <RelativeLayout
+            android:id="@+id/start_relative_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/basic_course_status">
+
+            <TextView
+                android:id="@+id/bcsd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Start Date"/>
+
+            <TextView
+                android:id="@+id/basic_course_start_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/bcsd"
+                android:paddingStart="32dp"
+                android:text="10/01/2020"/>
+
+            <ImageButton
+                android:id="@+id/alert_course_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_alert"
+                android:contentDescription="alert" />
+
+        </RelativeLayout>
+
+       <RelativeLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/start_relative_layout">
+
+           <TextView
+               android:id="@+id/bced"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="End Date"/>
+
+           <TextView
+               android:id="@+id/basic_course_end_date"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_toEndOf="@+id/bced"
+               android:paddingStart="32dp"
+               android:maxLines="1"
+               android:text="04/01/2021"/>
+
+           <ImageButton
+               android:id="@+id/alert_course_end"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_alignParentEnd="true"
+               android:src="@drawable/ic_alert"
+               android:contentDescription="alert" />
+
+       </RelativeLayout>
+
 
 
     </RelativeLayout>

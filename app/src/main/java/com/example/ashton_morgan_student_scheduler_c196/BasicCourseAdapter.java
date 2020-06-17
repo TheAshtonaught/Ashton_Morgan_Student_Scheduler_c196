@@ -3,6 +3,7 @@ package com.example.ashton_morgan_student_scheduler_c196;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,8 @@ import java.util.List;
 
 public class BasicCourseAdapter extends RecyclerView.Adapter<BasicCourseAdapter.BasicCourseHolder> {
     private List<Course> courses = new ArrayList<>();
+    private OnItemClickListener courseStartAlertListener;
+    private OnItemClickListener courseEndAlertListener;
 
     @NonNull
     @Override
@@ -23,11 +26,25 @@ public class BasicCourseAdapter extends RecyclerView.Adapter<BasicCourseAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BasicCourseHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BasicCourseHolder holder, final int position) {
         Course currentCourse = courses.get(position);
         holder.basicCourseTitleTextView.setText(currentCourse.getTitle());
         holder.basicCourseStatusTextView.setText(currentCourse.getStatus());
+        holder.basicCourseStartDateTextView.setText(currentCourse.getStartDate());
+        holder.basicCourseEndDateTextView.setText(currentCourse.getEndDate());
+        holder.courseStartAlertButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                courseStartAlertListener.onItemClick(courses.get(position));
+            }
+        });
 
+        holder.courseEndAlertButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                courseEndAlertListener.onItemClick(courses.get(position));
+            }
+        });
 
     }
 
@@ -48,12 +65,32 @@ public class BasicCourseAdapter extends RecyclerView.Adapter<BasicCourseAdapter.
     class BasicCourseHolder extends RecyclerView.ViewHolder {
         private TextView basicCourseTitleTextView;
         private TextView basicCourseStatusTextView;
+        private TextView basicCourseStartDateTextView;
+        private TextView basicCourseEndDateTextView;
+        private ImageButton courseStartAlertButton;
+        private ImageButton courseEndAlertButton;
 
         public BasicCourseHolder(@NonNull View itemView) {
             super(itemView);
 
             basicCourseTitleTextView = itemView.findViewById(R.id.basic_course_title);
             basicCourseStatusTextView = itemView.findViewById(R.id.basic_course_status);
+            basicCourseStartDateTextView = itemView.findViewById(R.id.basic_course_start_date);
+            basicCourseEndDateTextView = itemView.findViewById(R.id.basic_course_end_date);
+            courseStartAlertButton = itemView.findViewById(R.id.alert_course_start);
+            courseEndAlertButton = itemView.findViewById(R.id.alert_course_end);
         }
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(Course course);
+    }
+
+    public void setOnCourseStartAlertButtonClickListener(OnItemClickListener listener) {
+        this.courseStartAlertListener = listener;
+    }
+
+    public void setOnCourseEndAlertButtonClickListener(OnItemClickListener listener) {
+        this.courseEndAlertListener = listener;
     }
 }

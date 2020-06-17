@@ -47,5 +47,19 @@ public class AllCoursesActivity extends AppCompatActivity {
             }
         });
 
+
+        adapter.setOnCourseStartAlertButtonClickListener(new BasicCourseAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Course course) {
+
+            }
+        });
+
+        adapter.setOnCourseEndAlertButtonClickListener(new BasicCourseAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Course course) {
+
+            }
+        });
     }
 }

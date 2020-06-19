@@ -1,5 +1,6 @@
 package com.example.ashton_morgan_student_scheduler_c196;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -85,6 +86,8 @@ public class BasicCourseAdapter extends RecyclerView.Adapter<BasicCourseAdapter.
     public interface OnItemClickListener {
         void onItemClick(Course course);
     }
+
+
 
     public void setOnCourseStartAlertButtonClickListener(OnItemClickListener listener) {
         this.courseStartAlertListener = listener;

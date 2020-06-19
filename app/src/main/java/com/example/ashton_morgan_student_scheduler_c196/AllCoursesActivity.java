@@ -15,6 +15,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.List;
 
 public class AllCoursesActivity extends AppCompatActivity {
+    public static final String EXTRA_SEC_TO_NOTIFICATION =
+            "com.example.ashton_morgan_student_scheduler_c196.EXTRA_SEC_TO_NOTIFICATION";
     private SchedulerViewModel schedulerViewModel;
 
     @Override
@@ -52,6 +54,8 @@ public class AllCoursesActivity extends AppCompatActivity {
             @Override
             public void onItemClick(Course course) {
 
+                
+                startService(new Intent(AllCoursesActivity.this, NotificationService.class));
             }
         });
 
@@ -63,3 +67,28 @@ public class AllCoursesActivity extends AppCompatActivity {
         });
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

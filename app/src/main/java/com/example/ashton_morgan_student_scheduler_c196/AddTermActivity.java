@@ -84,6 +84,7 @@ public class AddTermActivity extends AppCompatActivity {
             return;
         }
 
+        // Check if date is valid
         try {
             Date startDate = new SimpleDateFormat("MM/dd/yyyy").parse(startDateString);
             Date endDate = new SimpleDateFormat("MM/dd/yyyy").parse(endDateString);

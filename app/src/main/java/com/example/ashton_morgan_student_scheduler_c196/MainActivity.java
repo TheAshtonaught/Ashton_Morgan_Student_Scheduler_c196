@@ -3,6 +3,7 @@ package com.example.ashton_morgan_student_scheduler_c196;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -16,12 +17,15 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     public static final int ADD_TERM_REQUEST = 1;
     public static final int EDIT_TERM_REQUEST = 2;
     private SchedulerViewModel schViewModel;
+    private List<Course> courseList = new ArrayList<>() ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         setTitle("Student Scheduler");
 
+        //final List<Course> courses = schViewModel.getAllCoursesList();
 
 
         FloatingActionButton addTermButton = findViewById(R.id.add_term_button);
@@ -59,6 +64,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        schViewModel.getAllCourses().observe(this, new Observer<List<Course>>() {
+            @Override
+            public void onChanged(List<Course> courses) {
+                courseList = courses;
+            }
+        });
+
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
                 ItemTouchHelper.LEFT) {
             @Override
@@ -68,8 +80,21 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                schViewModel.delete(adapter.getTermAt(viewHolder.getAdapterPosition()));
-                Toast.makeText(MainActivity.this, "Term Deleted", Toast.LENGTH_SHORT).show();
+
+                Term term = adapter.getTermAt(viewHolder.getAdapterPosition());
+                int termID = term.getId();
+
+                for (Course c : courseList) {
+                    if (c.getTermID() == termID) {
+                        Toast.makeText(MainActivity.this, "Term cannot be deleted if courses are assigned to it", Toast.LENGTH_SHORT).show();
+                        adapter.notifyDataSetChanged();
+                    } else {
+                        schViewModel.delete(adapter.getTermAt(viewHolder.getAdapterPosition()));
+                        Toast.makeText(MainActivity.this, "Term Deleted", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+
             }
         }).attachToRecyclerView(recyclerView);
 

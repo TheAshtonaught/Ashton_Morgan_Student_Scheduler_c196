@@ -9,7 +9,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {Term.class, Course.class, Assessment.class}, version = 5)
+@Database(entities = {Term.class, Course.class, Assessment.class}, version = 8)
 public abstract class SchedulerDatabase extends RoomDatabase {
 
 

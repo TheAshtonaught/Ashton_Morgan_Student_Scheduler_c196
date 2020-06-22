@@ -13,6 +13,7 @@ public class SchedulerViewModel extends AndroidViewModel {
     private LiveData<List<Term>> allTerms;
     private LiveData<List<Course>> allCourses;
     private LiveData<List<Assessment>> allAssessments;
+    private List<Course> allCoursesList;
 
 
     public SchedulerViewModel(@NonNull Application application) {
@@ -64,6 +65,10 @@ public class SchedulerViewModel extends AndroidViewModel {
 
     public LiveData<List<Course>> getAllCourses() {
         return allCourses;
+    }
+
+    public List<Course> getAllCoursesList() {
+        return allCoursesList;
     }
 
     public void insert(Assessment assessment) {

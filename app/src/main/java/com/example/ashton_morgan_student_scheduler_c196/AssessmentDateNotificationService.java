@@ -19,7 +19,7 @@ public class AssessmentDateNotificationService extends Service {
     public int triggerTimeInSec = 80000;
     private String notificationTitle = "";
     private String notificationText = "";
-    public static final String channelID = "2";
+    public static final String channelID = "3";
 
 
     @Nullable
@@ -89,7 +89,7 @@ public class AssessmentDateNotificationService extends Service {
         }
         assert notificationMgr != null;
         notificationMgr.notify((int) System.currentTimeMillis(), builder.build());
-        stopTimerTask();
+        //stopTimerTask();
     }
 
 

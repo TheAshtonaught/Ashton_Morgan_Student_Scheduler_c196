@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -40,6 +42,7 @@ public class AddCourseActivity extends AppCompatActivity {
     private EditText editCourseStatus;
     private EditText editCourseMentor;
     private EditText editCourseNotes;
+    private Button addNotesButton;
 
     private int termID;
 
@@ -62,6 +65,8 @@ public class AddCourseActivity extends AppCompatActivity {
             setTitle("Add Course");
         }
         termID = intent.getIntExtra(EXTRA_TERM_ID, -99);
+
+
 
     }
 
@@ -92,11 +97,12 @@ public class AddCourseActivity extends AppCompatActivity {
         String courseMentor = editCourseMentor.getText().toString();
         String courseNotes = editCourseNotes.getText().toString();
 
-        if (courseTitle.trim().isEmpty() || courseStatus.trim().isEmpty() ||
-                courseNotes.trim().isEmpty() || courseMentor.trim().isEmpty()) {
+        if (courseTitle.trim().isEmpty() || courseStatus.trim().isEmpty() || courseMentor.trim().isEmpty()) {
             Toast.makeText(this, "Fields Can't be blank", Toast.LENGTH_SHORT).show();
             return;
         }
+
+        if (courseNotes.trim().isEmpty()) courseNotes = "";
 
         try {
             Date startDate = new SimpleDateFormat("MM/dd/yyyy").parse(courseStartDateString);
@@ -150,9 +156,17 @@ public class AddCourseActivity extends AppCompatActivity {
         editCourseStatus = findViewById(R.id.edit_text_course_status);
         editCourseMentor = findViewById(R.id.edit_text_course_mentor);
         editCourseNotes = findViewById(R.id.edit_text_course_notes);
+        addNotesButton = findViewById(R.id.add_notes_button);
+        editCourseNotes.setVisibility(View.INVISIBLE);
 
     }
 
+    public void addNotes(View view) {
+
+        editCourseNotes.setVisibility(View.VISIBLE);
+        addNotesButton.setVisibility(View.INVISIBLE);
+
+    }
 
 
 

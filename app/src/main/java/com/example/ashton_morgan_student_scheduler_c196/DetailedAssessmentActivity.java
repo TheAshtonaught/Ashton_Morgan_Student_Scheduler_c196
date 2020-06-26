@@ -77,9 +77,15 @@ public class DetailedAssessmentActivity extends AppCompatActivity {
         addCourseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DetailedAssessmentActivity.this, AddAssessmentActivity.class);
-                intent.putExtra(AddAssessmentActivity.EXTRA_ASSESSMENT_COURSE_ID, courseID);
-                startActivityForResult(intent, ADD_ASSESSMENT_REQUEST);
+                System.out.println(assessmentsForCourse.size());
+                if (assessmentsForCourse.size() > 4) {
+                    Toast.makeText(DetailedAssessmentActivity.this, "Can not add more than 5 assessments per course", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent intent = new Intent(DetailedAssessmentActivity.this, AddAssessmentActivity.class);
+                    intent.putExtra(AddAssessmentActivity.EXTRA_ASSESSMENT_COURSE_ID, courseID);
+                    startActivityForResult(intent, ADD_ASSESSMENT_REQUEST);
+                }
+
 
             }
         });

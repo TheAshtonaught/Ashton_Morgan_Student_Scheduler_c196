@@ -62,7 +62,7 @@ public class AllCoursesActivity extends AppCompatActivity {
             public void onItemClick(Course course) {
 
                 Intent intent = new Intent(AllCoursesActivity.this, StartCourseNotificationService.class);
-                //intent.putExtra(EXTRA_SEC_TO_NOTIFICATION, 12);
+                intent.putExtra(EXTRA_SEC_TO_NOTIFICATION, 30);
                 intent.putExtra(EXTRA_NOTIFICATION_TITLE, "Course Starting");
                 String notifText = course.getTitle() + " will begin on " + course.getStartDate();
                 intent.putExtra(EXTRA_NOTIFICATION_TEXT, notifText);
@@ -76,7 +76,7 @@ public class AllCoursesActivity extends AppCompatActivity {
             public void onItemClick(Course course) {
 
                 Intent intent = new Intent(AllCoursesActivity.this, EndCourseNotificationService.class);
-                //intent.putExtra(EXTRA_SEC_TO_NOTIFICATION, 5);
+                intent.putExtra(EXTRA_SEC_TO_NOTIFICATION, 20);
                 intent.putExtra(EXTRA_NOTIFICATION_TITLE, "Course Ending");
                 String notifText = course.getTitle() + " will end on " + course.getEndDate();
                 intent.putExtra(EXTRA_NOTIFICATION_TEXT, notifText);

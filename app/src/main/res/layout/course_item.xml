@@ -92,7 +92,7 @@
             android:id="@+id/notes_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/mentor_info"
+            android:layout_below="@+id/assessments_button"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:gravity="center"
             android:text="Notes"/>
@@ -116,7 +116,7 @@
             android:id="@+id/assessments_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/share_notes_button"
+            android:layout_below="@+id/mentor_info"
             android:text="Assessments"/>
 
 

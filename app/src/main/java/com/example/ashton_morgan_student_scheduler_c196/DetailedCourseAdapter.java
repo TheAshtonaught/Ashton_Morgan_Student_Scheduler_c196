@@ -40,6 +40,12 @@ public class DetailedCourseAdapter extends RecyclerView.Adapter<DetailedCourseAd
         holder.notesTextView.setText(currentCourse.getNotes());
         holder.mentorInfoTextView.setText(currentCourse.getMentor());
 
+        if (currentCourse.getNotes().trim().isEmpty() || currentCourse.getNotes().equals("none")) {
+            holder.shareNotesButton.setVisibility(View.INVISIBLE);
+            holder.notesTextView.setVisibility(View.INVISIBLE);
+            holder.notesLabelTextView.setVisibility(View.INVISIBLE);
+        }
+
         holder.shareNotesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,6 +91,7 @@ public class DetailedCourseAdapter extends RecyclerView.Adapter<DetailedCourseAd
         private TextView endDateTextView;
         private TextView notesTextView;
         private TextView mentorInfoTextView;
+        private TextView notesLabelTextView;
         private Button shareNotesButton;
         private Button assessmentsButton;
         private ImageButton editCourseButton;
@@ -97,6 +104,7 @@ public class DetailedCourseAdapter extends RecyclerView.Adapter<DetailedCourseAd
             endDateTextView = itemView.findViewById(R.id.course_end_date);
             notesTextView = itemView.findViewById(R.id.notes_text_view);
             mentorInfoTextView = itemView.findViewById(R.id.mentor_info);
+            notesLabelTextView = itemView.findViewById(R.id.notes_label);
             shareNotesButton = itemView.findViewById(R.id.share_notes_button);
             assessmentsButton = itemView.findViewById(R.id.assessments_button);
             editCourseButton = itemView.findViewById(R.id.edit_course_button);

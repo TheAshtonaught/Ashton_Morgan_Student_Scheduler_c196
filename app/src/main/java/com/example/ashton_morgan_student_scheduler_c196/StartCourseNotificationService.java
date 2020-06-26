@@ -30,7 +30,6 @@ public class StartCourseNotificationService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         super .onStartCommand(intent , flags , startId);
-
         notificationTitle = intent.getStringExtra(AllCoursesActivity.EXTRA_NOTIFICATION_TITLE);
         notificationText = intent.getStringExtra(AllCoursesActivity.EXTRA_NOTIFICATION_TEXT);
         notificationsEnabledNotification();
@@ -90,7 +89,7 @@ public class StartCourseNotificationService extends Service {
         }
         assert notificationMgr != null;
         notificationMgr.notify((int) System.currentTimeMillis(), builder.build());
-        stopTimerTask();
+        //stopTimerTask();
     }
 
 
@@ -98,7 +97,7 @@ public class StartCourseNotificationService extends Service {
         NotificationManager notificationMgr = (NotificationManager) getSystemService( NOTIFICATION_SERVICE);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), channelID);
         builder.setContentTitle("Notifications Enabled");
-        builder.setContentText("Notification scheduled tomorrow");
+        builder.setContentText("Notification scheduled");
         builder.setSmallIcon(R.drawable.ic_alert);
         builder.setAutoCancel(true);
         if (android.os.Build.VERSION. SDK_INT >= android.os.Build.VERSION_CODES.O) {

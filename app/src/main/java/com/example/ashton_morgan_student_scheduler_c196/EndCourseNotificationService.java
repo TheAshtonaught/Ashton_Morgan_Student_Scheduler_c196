@@ -31,7 +31,6 @@ public class EndCourseNotificationService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         super.onStartCommand(intent, flags, startId);
-
         notificationTitle = intent.getStringExtra(AllCoursesActivity.EXTRA_NOTIFICATION_TITLE);
         notificationText = intent.getStringExtra(AllCoursesActivity.EXTRA_NOTIFICATION_TEXT);
         notificationsEnabledNotification();
@@ -88,7 +87,7 @@ public class EndCourseNotificationService extends Service {
         }
         assert notificationMgr != null;
         notificationMgr.notify((int) System.currentTimeMillis(), builder.build());
-        stopTimerTask();
+        //stopTimerTask();
     }
 
 
